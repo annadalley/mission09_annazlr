@@ -43,6 +43,7 @@ namespace mission09_annazlr.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
+            //Builds page tags
             for (int iCount = 1; iCount <= PageModel.TotalPages; iCount++)
             {
                 TagBuilder tb = new TagBuilder("a");

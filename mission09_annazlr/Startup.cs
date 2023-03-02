@@ -25,6 +25,7 @@ namespace mission09_annazlr
         
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add these services, and connections.
             services.AddControllersWithViews();
             services.AddDbContext<BookstoreContext>(options =>
             {

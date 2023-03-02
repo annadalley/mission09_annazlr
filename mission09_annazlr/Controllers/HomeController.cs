@@ -18,6 +18,7 @@ namespace mission09_annazlr.Controllers
             repo = temp;
         }
 
+        //This is for telling how many pages, and how many entries to each page, and it also orders the data.
         public IActionResult Index(int pageNum = 1)
         {
             int pageSize = 10;
