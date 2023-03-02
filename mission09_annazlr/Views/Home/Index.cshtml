@@ -1,0 +1,42 @@
+﻿@{
+}
+
+@model BooksViewModel
+
+<h1>Book Store</h1>
+
+@foreach (Book b in Model.Books)
+{
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+                @b.Title
+                <span class="badge bg-primary rounded-pill" style="float:right">
+                    <small>@b.Price.ToString("c")</small>
+                </span>
+            </h4>
+        </div>
+        <div class="card-text p-1">
+            <ul>
+                <li>Author Name: @b.Author</li>
+                <li>Publisher Name: @b.Publisher</li>
+                <li>ISBN: @b.Isbn</li>
+                <li>Classification/Category: @b.Classification</li>
+                <li>Number of Pages: @b.PageCount</li>
+                <li>Price: $@b.Price</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <br />
+}
+
+<div page-model="@Model.PageInfo" page-action="Index"
+     page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
+
+
