@@ -8,12 +8,15 @@
     <link href="/lib/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+    @* Makes the black line along top with the Title on it *@
     <div class="bg-dark text-white p-2">
         <span class="navbar-brand ml-2">BOOK STORE</span>
     </div>
+    @* Give 3 columns for the "look at all these books part, and 9 for the book list *@
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
             Look at all these books!
+            <vc:types></vc:types>
         </div>
         <div class="col-9">
             @RenderBody()

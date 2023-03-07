@@ -50,6 +50,22 @@ namespace mission09_annazlr
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name:"categorypage",
+                    pattern: "{category}/Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index" });
+
+                //This changes the route to say just the number instead of the default PageNum=2
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                endpoints.MapControllerRoute(
+                    name: "category",
+                    pattern: "{category}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1});
+
                 endpoints.MapDefaultControllerRoute();
             });
         }
