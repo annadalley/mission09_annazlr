@@ -8,10 +8,11 @@
 @* This is for dynamically creating the book entries to the page *@
 @foreach (Book b in Model.Books)
 {
-    <partial name="BookSummary" model="b"/>
+    <partial name="BookSummary" model="b" />
     <br />
 }
 
+@* This is for making the buttons to filter by category *@ 
 <div page-model="@Model.PageInfo" page-action="Index"
      page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"

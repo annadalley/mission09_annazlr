@@ -18,9 +18,23 @@
             <li>Author Name: @Model.Author</li>
             <li>Publisher Name: @Model.Publisher</li>
             <li>ISBN: @Model.Isbn</li>
-            <li>Classification/Category: @Model.Classification @Model.Category</li>
+            <li>Classification: @Model.Classification </li>
+            <li>Category: @Model.Category</li>
             <li>Number of Pages: @Model.PageCount</li>
             <li>Price: $@Model.Price</li>
         </ul>
+
+        @* Form to add a specific book to the cart *@
+        <form method="post" asp-page="/Purchase">
+
+            <input type="hidden" asp-for="@Model.BookId" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+            <span class="card-text">
+                <button type="submit" class="btn btn-success btn-sm float-end">Add To Cart</button>
+            </span>
+        </form>
     </div>
 </div>
+
+

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace mission09_annazlr.Components
 {
+    //This is for showing the specified categories
     public class TypesViewComponent : ViewComponent
     {
         private IBookStoreRepository repo { get; set; }

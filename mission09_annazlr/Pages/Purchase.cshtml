@@ -1,0 +1,48 @@
+﻿@page
+@model mission09_annazlr.Pages.PurchaseModel
+@{
+}
+
+@* Purchase Page *@
+<h2>Your Cart</h2>
+
+@* Makes purchase table *@
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    @* Fills in table with info *@
+    <tbody>
+        @foreach(var i in Model.cart.Items)
+        {
+            <tr>
+                <td>@i.Book.Title</td>
+                <td>@i.Quantity</td>
+                <td>@i.Book.Price</td>
+                <td>@(i.Quantity * i.Book.Price)</td>
+            </tr>
+        }
+    </tbody>
+
+    @* Calculates the total *@
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.cart.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+@* Continue shopping button *@
+<div>
+    <a class="btn btn-success" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
+
