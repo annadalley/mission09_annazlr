@@ -14,20 +14,21 @@ namespace mission09_annazlr.Pages
     {
         private IBookStoreRepository repo { get; set; }
 
-        public PurchaseModel (IBookStoreRepository temp)
-        {
-            repo = temp;
-        }
-
         //Makes cart object of type cart
         public Cart cart { get; set; }
         public string ReturnUrl { get; set; }
+
+        public PurchaseModel (IBookStoreRepository temp, Cart c)
+        {
+            repo = temp;
+            cart = c;
+        }
 
         //OnGet request to get the cart.
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+
         }
 
         //Onpost request to add something to the cart cart
@@ -35,12 +36,17 @@ namespace mission09_annazlr.Pages
         {
             Book b = repo.Books.FirstOrDefault(x => x.BookId == bookId);
 
-            cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
             cart.AddItem(b, 1);
-
-            HttpContext.Session.SetJson("cart", cart);
 
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
+
+        public IActionResult OnPostDelete(int bookId, string returnUrl)
+        {
+            cart.DeleteItem(cart.Items.First(x => x.Book.BookId == bookId).Book);
+
+            return RedirectToPage(new { ReturnUrl = returnUrl });
+        }
+
     }
 }

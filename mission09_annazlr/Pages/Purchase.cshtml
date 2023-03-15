@@ -26,7 +26,16 @@
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
                 <td>@i.Book.Price</td>
-                <td>@(i.Quantity * i.Book.Price)</td>
+                <td>@((i.Quantity * i.Book.Price).ToString("c"))</td>
+
+                @* This is for the delete button *@
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="bookId" value="@i.Book.BookId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -43,6 +52,7 @@
 
 @* Continue shopping button *@
 <div>
-    <a class="btn btn-success" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-success" asp-controller="Purchase" asp-action="Checkout" >Checkout</a>
 </div>
 

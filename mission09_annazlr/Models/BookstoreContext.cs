@@ -17,5 +17,6 @@ namespace mission09_annazlr.Models
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<ActualPurchase> Purchases { get; set; }
     }
 }
